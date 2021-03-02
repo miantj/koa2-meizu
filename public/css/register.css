@@ -124,7 +124,19 @@ input {
   height: 50px;
   border: 1px solid #32a5e7;
   border-radius: 10px;
+  position: relative;
 }
+
+#form div.section_form_pass .section_form_pass_icon {
+  width: 30px;
+  height: 46px;
+  position: absolute;
+  top: 3px;
+  right: 6px;
+  cursor: pointer;
+  background: url(../img/main_icon.png) 4px 162px;
+}
+
 .form_pass,
 .form_text {
   width: 280px;
@@ -177,7 +189,7 @@ input {
 #form {
   position: absolute;
   top: 16%;
-  right: 15% ;
+  right: 15%;
   background: #fff;
   padding: 35px 35px 10px;
 }
@@ -196,7 +208,7 @@ input {
   background: #ffd1ca url("../Images/error-ico.png") no-repeat 10px 9px;
 }
 .op {
-  position: absolute ;
+  position: absolute;
   right: 5px;
   top: 10px;
   cursor: pointer;
@@ -205,7 +217,7 @@ input {
 #check {
   width: 15px;
   height: 15px;
-  margin: 0  !important;
+  margin: 0 !important;
   vertical-align: bottom;
 }
 /*ҳ��ײ�*/

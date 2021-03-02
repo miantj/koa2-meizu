@@ -9,12 +9,12 @@ class db {
   }
 
   connect() {
-    // console.warn('mydb', this.mydb)
+    console.warn('mydb', this.mydb)
     if (!this.mydb) {
       this.mydb = mysql.createPool({
         host: 'localhost', //远程的话，写ip
         user: 'root', //数据库管理员
-        password: 'root', //数据库密码
+        password: '12345678', //数据库密码
         database: 'mz' //要连接的数据库名称
       })
     }

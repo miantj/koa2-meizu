@@ -87,10 +87,10 @@ dd {
 #form {
   position: absolute;
   top: 16%;
-  right: 15% ;
-  background: #fff ;
+  right: 15%;
+  background: #fff;
   padding: 35px 35px 10px;
-  opacity: .8;
+  opacity: 0.8;
 }
 #stn {
   width: 100%;
@@ -178,6 +178,17 @@ dd {
   height: 46px;
   margin-top: 40px;
   margin-bottom: 10px;
+  position: relative;
+}
+
+#form div.section_form_pass .section_form_pass_icon {
+  width: 30px;
+  height: 46px;
+  position: absolute;
+  top: 3px;
+  right: 6px;
+  cursor: pointer;
+  background: url(../img/main_icon.png) 4px 162px;
 }
 #form div.section_form_checkbox {
   height: 24px;
@@ -207,7 +218,7 @@ dd {
   position: relative;
   background: #fff;
 }
-/*�ֻ���½*/
+
 #code2 {
   position: absolute;
   top: 94px;
@@ -227,7 +238,7 @@ dd {
 }
 #code2 div.section_form_code a {
   display: inline-block;
-  width: 130px ;
+  width: 130px;
   height: 46px;
   position: absolute;
   top: 160px;
