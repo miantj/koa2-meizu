@@ -1,47 +1,58 @@
-const mysql = require('mysql')
+const mysql = require("mysql");
 
+let pools = {}; //连接池
 
 class db {
-
   constructor() {
-    this.mydb = null
-
+    this.pools = {}; //连接池
   }
 
-  connect() {
-    console.warn('mydb', this.mydb)
-    if (!this.mydb) {
-      this.mydb = mysql.createPool({
-        host: 'localhost', //远程的话，写ip
-        user: 'root', //数据库管理员
-        password: '12345678', //数据库密码
-        database: 'mz' //要连接的数据库名称
-      })
-    }
-  }
-
-  // 查询
-  find(sql) {
-    this.connect()
-    return new Promise((resolve, reject) => {
-      this.mydb.getConnection((err, connection) => {
-        if (err) {
-          reject(err)
-        } else {
-          connection.query(sql, (err, results, fields) => {
-            if (err) {
-              reject(err)
-            }
-            resolve(results)
-            connection.release() //会话结束
-          })
-        }
+  query = (sql, host = "127.0.0.1", port = "3366") => {
+    if (!this.pools.hasOwnProperty(host)) {
+      //是否存在连接池
+      this.pools[host] = mysql.createPool({
+        //不存在创建
+        host: host,
+        port: port,
+        user: "root",
+        password: "12345678",
+        database: "mz",
       });
-    })
-  }
+    }
+    return new Promise((resolve, reject) => {
+      this.pools[host].getConnection((err, connection) => {
+        //初始化连接池
+        if (err) console.log(err, "数据库连接失败");
+        else
+          connection.query(sql, (err, results) => {
+            //去数据库查询数据
+            connection.release(); //释放连接资源
+            if (err) reject(err);
+            else resolve(results);
+          });
+      });
+    });
+  };
 
-  
-
+  // // 查询
+  // find(sql) {
+  //   this.connect();
+  //   return new Promise((resolve, reject) => {
+  //     this.mydb.getConnection((err, connection) => {
+  //       if (err) {
+  //         reject(err);
+  //       } else {
+  //         connection.query(sql, (err, results, fields) => {
+  //           if (err) {
+  //             reject(err);
+  //           }
+  //           resolve(results);
+  //           connection.release(); //会话结束
+  //         });
+  //       }
+  //     });
+  //   });
+  // }
 }
 
-module.exports = new db()
+module.exports = new db();

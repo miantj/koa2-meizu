@@ -1,0 +1,8 @@
+# vue的nodejs编译环境
+FROM mysql:latest
+
+ENV MYSQL_ALLOW_EMPTY_PASSWORD yes
+
+# 将所需文件放到容器中
+COPY mz.sql /mysql/mz.sql
+

@@ -1,7 +1,7 @@
 const Koa = require('koa');
 const path = require('path')
 
-const portfinder = require("portfinder")
+// const portfinder = require("portfinder")
 const views = require('koa-views')
 const static = require('koa-static')
 const koaBody = require('koa-body');
@@ -29,13 +29,13 @@ app
 
 
 models(app)
-
+let port = 8080
 // 设置插件的初始搜寻端口号
-portfinder.getPort((err, port) => {
-    if (err) reject(err)
-    else {
-        // 监听端口:
+// portfinder.getPort((err, port) => {
+//     if (err) reject(err)
+//     else {
+//         // 监听端口:
         app.listen(port);
         console.log(`app started at port 127.0.0.1:${port}`);
-    }
-})
+//     }
+// })

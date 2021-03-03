@@ -89,8 +89,8 @@
 
             $(document).ajaxComplete(function (event, xhr, settings) {
                 var obj = JSON.parse(xhr.responseText);
-                var data = obj.data;
-                console.warn(data)
+                // var data = obj.data;
+                console.warn(obj)
             });
 
         }
