@@ -1,13 +1,11 @@
 const mysql = require("mysql");
 
-let pools = {}; //连接池
-
 class db {
   constructor() {
     this.pools = {}; //连接池
   }
 
-  query = (sql, host = "127.0.0.1", port = "3366") => {
+  query = (sql, host = "172.18.11.167", port = "3366") => {
     if (!this.pools.hasOwnProperty(host)) {
       //是否存在连接池
       this.pools[host] = mysql.createPool({
@@ -33,26 +31,6 @@ class db {
       });
     });
   };
-
-  // // 查询
-  // find(sql) {
-  //   this.connect();
-  //   return new Promise((resolve, reject) => {
-  //     this.mydb.getConnection((err, connection) => {
-  //       if (err) {
-  //         reject(err);
-  //       } else {
-  //         connection.query(sql, (err, results, fields) => {
-  //           if (err) {
-  //             reject(err);
-  //           }
-  //           resolve(results);
-  //           connection.release(); //会话结束
-  //         });
-  //       }
-  //     });
-  //   });
-  // }
 }
 
 module.exports = new db();

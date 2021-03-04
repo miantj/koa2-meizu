@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
 # 删除旧的镜像
-docker rmi payfornow/nodejs:1.0
+docker rmi minglyle/mz_koa_nodejs
 
 # 编译
-docker build -f ./Dockerfile.nodejs -t payfornow/nodejs:1.0 .
+docker build -f ./Dockerfile.nodejs -t minglyle/mz_koa_nodejs .
 
 # 推送
-docker push payfornow/nodejs:1.0
+docker push minglyle/mz_koa_nodejs
