@@ -5,7 +5,7 @@
 一起学kao ，使用kao + docker开发部署魅族商场，web页面未使用任何依赖全部手写原生js与html。[传送门](http://8.129.114.82) 
 
 
-[视频预览](https://github.com/miantj/koa2-meizu/blob/master/meizu.gif)
+![视频预览](./meizu.gif)
 
 ## 安装依赖
 
