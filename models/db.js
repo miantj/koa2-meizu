@@ -5,7 +5,7 @@ class db {
     this.pools = {}; //连接池
   }
 
-  query = (sql, host = "172.18.11.167", port = "3366") => {
+  query = (sql, host = "localhost", port = "3306") => {
     if (!this.pools.hasOwnProperty(host)) {
       //是否存在连接池
       this.pools[host] = mysql.createPool({
