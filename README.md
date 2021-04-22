@@ -1,9 +1,6 @@
-# 魅族商场kao + docker + 原生js
+# 魅族商场 kao + docker + 原生 js
 
-
-
-一起学kao ，使用kao + docker开发部署魅族商场，web页面未使用任何依赖全部手写原生js与html。[传送门](http://8.129.114.82) 
-
+一起学 kao ，使用 kao + docker 开发部署魅族商场，web 页面未使用任何依赖全部手写原生 js 与 html。[传送门](http://1.116.104.127:8080)
 
 ![魅族商场](./meizu.gif)
 ![魅族商场](./meizu2.gif)
@@ -55,6 +52,8 @@ docker run --name mysql-test -p 3366:3306 -e MYSQL_ROOT_PASSWORD=12345678 -d min
 <!-- -p 3306:3306 ：映射容器服务的 3306 端口到宿主机的 3366 端口，外部主机可以直接通过 宿主机ip:3306 访问到 MySQL 的服务。
 MYSQL_ROOT_PASSWORD=12345678：设置 MySQL 服务 root 用户的密码。 -->
 
+
+<!-- 进入docker容器导入 Mysql 数据 -->
 docker exec -it mysql-test /bin/bash
 
 mysql -u root -p
@@ -62,15 +61,24 @@ mysql -u root -p
 <!-- Mysql 导入数据 -->
 source mysql/mz.sql
 
+<!-- 导入完成检查数据 -->
+use mz;
+
+show tables;
+
 <!-- 创建koa容器 -->
 docker build -f ./Dockerfile.nodejs -t minglyle/mz_koa_nodejs .
 
 <!-- 运行koa容器 -->
-docker run --name koa -p 80:8080 -d minglyle/mz_koa_nodejs
+docker run --name koa -p 8080:8080 -d minglyle/mz_koa_nodejs
+
+-p 80:8080 映射容器的8080端口到主机80端口
 
 ```
 
 mysql -uroot -p12345678 -e "create database db;"
+
+## docker mysql 宿主机连接不上时可以试试以下代码
 
 ## 我拉取 mysql 时候没有指定 mysql 版本号， 默认拉取的是 Mysql8
 
