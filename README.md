@@ -96,3 +96,17 @@ alter user 'root'@'%' identified with mysql_native_password by '12345678';
 flush privileges;
 
 ```
+## 如果服务器重启了重启服务
+```
+
+<!-- 重新运行dorker -->
+systemctl restart docker.service
+<!-- 查看镜像 -->
+docker images
+<!-- 运行mysql -->
+docker run --name mz_koa_mysql -d minglyle/mz_koa_mysql
+<!-- 运行魅族koa容器 -->
+docker run --name koa -p 8080:8080 -d minglyle/mz_koa_nodejs
+
+```
+
